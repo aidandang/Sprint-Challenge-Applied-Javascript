@@ -48,7 +48,7 @@ const createCarousel = (imageLinks, i) => {
   images[1].setAttribute('src' , imageLinks[1]);
   images[2].setAttribute('src' , imageLinks[2]);
   images[3].setAttribute('src' , imageLinks[3]);
-  images[i].setAttribute('style', 'display: inline');
+  images[i].setAttribute('style', 'display: block');
   rightButton.classList.add('right-button');
 
   // Add content
@@ -65,23 +65,25 @@ carouselContainer.appendChild(createCarousel(imageLinks, i));
 const leftBtn = document.querySelector('.left-button');
 leftBtn.addEventListener('click', (event) => {
   var imgs = document.querySelectorAll('.carousel img');
+  imgs[i].style.display = 'none';
   if (i == 3) {
     i = 0;
   } else {
     i = i + 1;
   };
-  imgs[i].style.display = 'inline';
+  imgs[i].style.display = 'block';
 });
 
 const rightBtn = document.querySelector('.right-button');
 rightBtn.addEventListener('click', (event) => {
   var imgs = document.querySelectorAll('.carousel img');
+  imgs[i].style.display = 'none';
   if (i == 0) {
     i = 3;
   } else {
     i = i - 1;
   };
-  imgs[i].style.display = 'inline';
+  imgs[i].style.display = 'block';
 });
 
 

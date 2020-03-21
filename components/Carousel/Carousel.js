@@ -17,3 +17,71 @@
     <div class="right-button"> > </div>
   </div>
 */
+
+const imageLinks = [
+  './assets/carousel/mountains.jpeg',
+  './assets/carousel/computer.jpeg',
+  './assets/carousel/trees.jpeg',
+  './assets/carousel/turntable.jpeg',
+];
+
+const createCarousel = (imageLinks, i) => {
+
+  let images = [];
+
+  // Create elements
+  const carousel = document.createElement('div');
+  const leftButton = document.createElement('div');
+  images[0] = document.createElement('img');
+  images[1] = document.createElement('img');
+  images[2] = document.createElement('img');
+  images[3] = document.createElement('img');
+  const rightButton = document.createElement('div');
+  
+  // Create structure
+  carousel.append(leftButton, images[0], images[1], images[2], images[3], rightButton);
+
+  // Add styles and set Attributes
+  carousel.classList.add('carousel');
+  leftButton.classList.add('left-button');
+  images[0].setAttribute('src' , imageLinks[0]);
+  images[1].setAttribute('src' , imageLinks[1]);
+  images[2].setAttribute('src' , imageLinks[2]);
+  images[3].setAttribute('src' , imageLinks[3]);
+  images[i].setAttribute('style', 'display: inline');
+  rightButton.classList.add('right-button');
+
+  // Add content
+  leftButton.textContent = ` < `;
+  rightButton.textContent = ` > `;
+
+  return carousel;
+}
+
+const carouselContainer = document.querySelector('.carousel-container');
+let i = 0;
+carouselContainer.appendChild(createCarousel(imageLinks, i));
+
+const leftBtn = document.querySelector('.left-button');
+leftBtn.addEventListener('click', (event) => {
+  var imgs = document.querySelectorAll('.carousel img');
+  if (i == 3) {
+    i = 0;
+  } else {
+    i = i + 1;
+  };
+  imgs[i].style.display = 'inline';
+});
+
+const rightBtn = document.querySelector('.right-button');
+rightBtn.addEventListener('click', (event) => {
+  var imgs = document.querySelectorAll('.carousel img');
+  if (i == 0) {
+    i = 3;
+  } else {
+    i = i - 1;
+  };
+  imgs[i].style.display = 'inline';
+});
+
+
